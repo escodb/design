@@ -1,6 +1,6 @@
 # Operation scheduling
 
-High-level write operations in VaultDB perform a set of multiple writes to
+High-level write operations in EscoDB perform a set of multiple writes to
 individual items inside shard files. For example, `update('/my/note')` breaks
 down into the following writes to individual items:
 
@@ -82,4 +82,4 @@ Instead we'd like an efficient method for constructing a write graph from a set
 of operations that will tend to produce _improved_ performance compared to
 executing each operation individually in its own write request. We will use some
 heuristics based on examples and our knowledge of the likely shape of operation
-dependencies in VaultDB.
+dependencies in EscoDB.

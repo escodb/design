@@ -1,8 +1,8 @@
 # Storage model
 
-VaultDB is designed to run on top of _blob stores_; interfaces that let one read
+EscoDB is designed to run on top of _blob stores_; interfaces that let one read
 and write files as a unit rather than having byte-level or page-level access to
-data. This lets us run VaultDB on top of many interfaces available in the
+data. This lets us run EscoDB on top of many interfaces available in the
 browser, such as localStorage or cloud storage services. The only way to update
 a file in such systems is to completely overwrite it with a new blob. This means
 that typical database implementation methods such as B+trees or append-only logs

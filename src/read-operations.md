@@ -1,6 +1,6 @@
 # Read operations
 
-VaultDB supports three main read operations:
+EscoDB supports three main read operations:
 
 - `get()`: read the value of a single document
 - `list()`: read the names of a directory's children

@@ -1,6 +1,6 @@
 # Architecture
 
-VaultDB consists of three layers:
+EscoDB consists of three layers:
 
 - The _Query API_ is the public interface that applications will use; we will go
   through the operations it provides later in this design.

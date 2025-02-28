@@ -16,7 +16,7 @@ The simplest type of failure to handle is one where retrying the request is not
 likely to succeed. For example, an authorization failure most likely indicates
 that your credentials are not valid, and repeating the request with the same
 credentials will not work. This sort of failure should be reported to the
-application as an exception so that appropriate action can be taken. VaultDB
+application as an exception so that appropriate action can be taken. EscoDB
 itself should not attempt to recover from the failure, it should just stop
 executing the current task. All calls to the Query API that are part of the
 current task should fail with an exception. It's possible that this means some

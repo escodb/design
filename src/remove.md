@@ -115,7 +115,7 @@ renders the version ID returned by `get()` stale, and the following
 `put()`/`rm()` will fail with a conflict error. Similarly, a write to a
 directory item can invalidate a `list()`, causing a future `link()`/`unlink()`
 to fail. We need to arrange things so that any sequence of operations executed
-by a set of VaultDB clients does not leave the data in an unsafe state. Any
+by a set of EscoDB clients does not leave the data in an unsafe state. Any
 operation that would lead to such a state should cause an invalidation
 somewhere, leading to unsafe operations being rejected with a conflict.
 
@@ -1029,7 +1029,7 @@ item's current version before proceeding.
 
 While this can be implemented on top of an API that requires an item to be read
 before it's deleted, just to get its current version, this isn't how we intend
-VaultDB to be used. `update()` hides the internal concurrency control by taking
+EscoDB to be used. `update()` hides the internal concurrency control by taking
 an update function rather than a new state, and it retries until the update
 succeeds. For symmetry it makes sense to treat `remove()` like a special kind of
 update and retry it until it succeeds. If the application isn't co-ordinating
@@ -1044,6 +1044,6 @@ If we don't expose version information in the API, then there's nothing an
 application could sensibly do with a rejected `remove()` other than make the
 exact decision we just did about whether to bail or retry based on a blanket
 policy, rather than on the state of the document in question. It would only make
-sense for VaultDB's Query API to expose rejection as a mode of failure if we
+sense for EscoDB's Query API to expose rejection as a mode of failure if we
 _also_ expose versioning and don't retry operations ourselves, which would
 fundamentally change the design.

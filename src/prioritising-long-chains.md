@@ -330,7 +330,7 @@ the graph we started with.
           │   └────┘
 
 This type of optimisation assumes the total graph depth will be dominated by one
-or a few long operation chains; in VaultDB this won't be especially useful since
+or a few long operation chains; in EscoDB this won't be especially useful since
 most writes involve chains of just two operations, but this could be useful for
 applying this planning algorithm to other problems. It might be useful to make
 this optimisation an optional task to perform once the initial graph is built,

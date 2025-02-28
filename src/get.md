@@ -16,19 +16,19 @@ get('/alice/')
 The `get()` function requires a single shard read: we hash the path to determine
 the shard it resides in, then read that shard. If multiple `get()` calls are
 executed close together, it would be beneficial to cache the shard reads.
-Although VaultDB instances will usually be short-lived, we should have a way of
+Although EscoDB instances will usually be short-lived, we should have a way of
 scoping the duration of the cache rather than caching shard reads indefinitely.
 
-VaultDB cannot support multi-object transactions in the SQL sense, but we do
-need a concept of batches of operations that are planned and executed together.
-We will call such a set of related operations a _task_.
+EscoDB cannot support multi-object transactions in the SQL sense, but we do need
+a concept of batches of operations that are planned and executed together. We
+will call such a set of related operations a _task_.
 
 The primary purpose of the cache in this case is to prevent reloading the same
 shard over and over to read multiple items that reside in it, in the case where
 the reads are close together in time. If the user wants indefinite caching,
 there should be a way to explicitly indicate this by starting a task and
 performing the reads from within that task. Caches should be scoped to that
-task, rather than to the whole VaultDB instance.
+task, rather than to the whole EscoDB instance.
 
 There's not a strong reason to perform any explicit concurrency control for this
 operation. For Locking adapters, it is tempting to pre-emptively lock a set of

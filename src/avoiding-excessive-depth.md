@@ -1,6 +1,6 @@
 # Avoiding excessively deep graphs
 
-In VaultDB, operations will tend to have short dependency chains, typically with
+In EscoDB, operations will tend to have short dependency chains, typically with
 only two levels, for example a `put()` depending on a set of `link()` calls.
 `remove()` and `prune()` graphs may be deeper but these will normally be
 executed rarely relative to `update()`. Despite this, it is possible to form
@@ -381,8 +381,8 @@ increase the group's depth by 2.
 We can see how following this pattern produces a similar result to what we saw
 above. It doesn't seem like sorting by operation depth produced a radically
 different approach; graph-building decisions are still guided by the relative
-depth of write groups. Since dependency chains in VaultDB are typically short
-and msot operations have a depth of either 0 or 1, sorting them by depth doesn't
+depth of write groups. Since dependency chains in EscoDB are typically short and
+msot operations have a depth of either 0 or 1, sorting them by depth doesn't
 meaningfully change the graph building process. It just adds delay to the start
 of the process, since we can't start building the graph until we have
 information for all operations and we've sorted them. It also prevents graphs

@@ -168,7 +168,7 @@ graph where a `put()` operation depends on one or more `link()` operations.
     │ link('/path/to/', 'doc.txt')  │────'
     └───────────────────────────────┘
 
-In VaultDB's data model, all updates will depend on a `link()` operation on the
+In EscoDB's data model, all updates will depend on a `link()` operation on the
 root directory. To avoid redundant work and reduce the chance of conflicts, we
 may be able to avoid performing a write for a `link()` if it already contains
 the correct items. For example, if `/my/note` itself is a new document, but the
@@ -255,7 +255,7 @@ or it fails and the `put()` doesn't happen at all. Therefore we can defer the
               ├─ list('/my/')
               └─ get('/my/note')
 
-Although `update()` calls in VaultDB only have a two-level dependency graph, we
+Although `update()` calls in EscoDB only have a two-level dependency graph, we
 can generalise some rules about how the Shard Manager should schedule writes.
 When one change _X_ depends on another change _Y_, we should only apply _X_ and
 write it after a write containing change _Y_ has successfully committed. A chain

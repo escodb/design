@@ -1,6 +1,6 @@
 # Purpose
 
-VaultDB is designed to store small numbers (hundreds or thousands) of small
+EscoDB is designed to store small numbers (hundreds or thousands) of small
 objects, typically JSON documents or base-64 blobs, with all data being
 encrypted at rest. Its primary application is storage of credentials --
 passwords, TOTP keys, configuration parameters, and so on. The design has been
@@ -19,14 +19,14 @@ to files are assumed to be independent.
 [3]: https://remotestorage.io/
 
 The backing store will potentially be accessed over the network with high
-latency, and so VaultDB's primary concern is that operations make as efficient
+latency, and so EscoDB's primary concern is that operations make as efficient
 use of the network as possible while making a best effort at consistency. What
 we mean by _consistency_ will be explored through the rest of this design.
 
-VaultDB is not a long-lived server process but is instead implemented as a
+EscoDB is not a long-lived server process but is instead implemented as a
 JavaScript library. There is no central server that mediates requests, and a
-single backing store can be accessed arbitrarily by any number of VaultDB
-instances at a time. We expect that instances of the VaultDB client will be
+single backing store can be accessed arbitrarily by any number of EscoDB
+instances at a time. We expect that instances of the EscoDB client will be
 short-lived, being used by command-line programs and short-lived web pages. So,
 any in-memory state used by the database, such as cached data, will survive for
 a short period of time before being dropped. The only persistent state is that
@@ -40,7 +40,7 @@ it's unlikely a single user will execute multiple database processes
 concurrently. So when thinking about consistency, our main concern is partial
 failure caused by failed network requests or interrupted program execution,
 rather than data races caused by concurrent access. That being said, we
-recognise that processes using VaultDB may live for a long time, and have reads
+recognise that processes using EscoDB may live for a long time, and have reads
 and writes separated by long periods of time, raising the likelihood of write
 conflicts.
 

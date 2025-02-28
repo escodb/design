@@ -1,12 +1,12 @@
 # Data model
 
-Documents in VaultDB are arranged in a filesystem-like hierarchy rather than a
+Documents in EscoDB are arranged in a filesystem-like hierarchy rather than a
 flat namespace. This provides a means to group related documents together so
 that they can be found efficiently by a common prefix of their path. This
 enables features like tab-completion and removal of whole sets of related
 documents with a single function call. Let's define a few terms:
 
-- _Document_: a blob of data, of arbitrary type. For the environments VaultDB is
+- _Document_: a blob of data, of arbitrary type. For the environments EscoDB is
   intended to operate in, this blob will typically be a string, either JSON or a
   base-64 string. However, our design doesn't assume any particular data
   serialisation.
@@ -27,7 +27,7 @@ documents with a single function call. Let's define a few terms:
 - _Item_: a complete logical database entry consisting of a path and either a
   document or directory; a key-value pair.
 
-For example, a set of documents stored in VaultDB might logically resemble this
+For example, a set of documents stored in EscoDB might logically resemble this
 tree of files:
 
     /

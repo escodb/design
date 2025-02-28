@@ -1,6 +1,6 @@
 # Write operations
 
-VaultDB supports three write operations:
+EscoDB supports three write operations:
 
 - `update()`: update the value of a single document, creating it if absent
 - `remove()`: remove a single document

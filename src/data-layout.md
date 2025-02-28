@@ -16,8 +16,8 @@ the details may change in future.
 
 - A shard file consists of a list of items separated by newlines (`\n`). Shard
   files may have arbitrary names, and there may be an arbitrary number of them.
-  It is up to the VaultDB frontend to determine how many shards exist, and to
-  map item paths onto shard IDs as it sees fit.
+  It is up to the EscoDB frontend to determine how many shards exist, and to map
+  item paths onto shard IDs as it sees fit.
 
 - The first item is a JSON _metadata object_ that contains the file format
   version, i.e. `{"version":1}`. This item is stored in plaintext.
@@ -58,7 +58,7 @@ itself. Listing a directory similarly requires decrypting the shard index and
 the directory item, and no other document items. This minimises the amount of
 material that must be decrypted in memory to read the desired data.
 
-In the VaultDB frontend, all documents are assumed to be JSON values, but the
+In the EscoDB frontend, all documents are assumed to be JSON values, but the
 lower level machinery makes no assumptions about the internal layout of shard
 files, the encoding of documents, the existence of different item types, or the
 fact that items are encrypted. The job of the internal middleware is just to
