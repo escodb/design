@@ -1,6 +1,5 @@
 [book]
 authors = ["James Coglan"]
 language = "en"
-multilingual = false
 src = "src"
 title = "EscoDB Internal Design"
